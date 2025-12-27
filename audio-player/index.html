@@ -1,0 +1,263 @@
+<html>
+
+<head>
+
+<div class="parent header">
+<a href="/home">FUCKING AWESOME WEBSITE LOGO</a>
+</div>
+
+</head>
+
+<body>
+
+<audio id="audio">
+<source src="girls.mp3" type="audio/mpeg">
+Your browser is lame and doesn't audio players :/
+</audio>
+
+<div class="parent durationDiv">
+<span id="currentTimeDisplay" class="child">0:00</span>
+<input type="range" min="0" value="0" id="durationSlider" class="child">
+<span id="durationDisplay" class="child">0:00</span>
+</div>
+
+<div class="parent buttonsDiv">
+<button id="play" class="child">PLAY</button>
+<button id="pause" class="child">PAUSE</button>
+<button id="restart" class="child">RESTART</button>
+<button id="mute" class="child">MUTE</button>
+<button id="showVolume" class="child">VOLUME</button>
+</div>
+
+<input type=range max="100" min="0" value="100" step="1" id="volume" oninput="this.nextElementSibling.value = this.value" hidden>
+<output id="volumeLabel" hidden>100</output>
+
+<ul>
+  <li class="flex-item">
+    <img src="mmmm.png" id="ruler" class="covers">
+    <span>Ruler of Everything</span>
+  </li>
+  <li class="flex-item">
+    <img src="gne.png" id="lady" class="covers">
+    <span>A Lady</span>
+  </li>
+  <li class="flex-item">
+    <img src="nat.png" id="girls" class="covers">
+    <span>California Gurls</span>
+  </li>
+  <li class="flex-item">
+    <img src="jhjh.png" id="candle" class="covers">
+    <span>Candle on the Water</span>
+  </li>
+</ul>
+
+<script>
+
+const audio = document.getElementById('audio');
+const volume = document.getElementById('volume');
+const activeColor = "#31263e";
+const inactiveColor = "#8d86c9";
+
+play.addEventListener("click", function() {
+    audio.play()
+});
+
+pause.addEventListener("click", function() {
+    audio.pause()
+});
+
+restart.addEventListener("click", function() {
+    audio.currentTime = 0
+});
+
+mute.addEventListener("click", function() {
+  this.textContent = this.textContent === "UNMUTE" ? "MUTE" : "UNMUTE"; // change this to image.src if you have one
+  audio.muted = !audio.muted;
+})
+
+showVolume.addEventListener("click", function() {
+    volume.hidden = !volume.hidden;
+    volumeLabel.hidden = !volumeLabel.hidden;
+})
+
+volume.addEventListener('input', function() {
+  audio.volume = this.value / 100
+});
+
+volume.addEventListener("input", function() {
+  const ratio = (this.value - this.min) / (this.max - this.min) * 100;
+  this.style.background = `linear-gradient(0deg, ${activeColor} ${ratio}%, ${inactiveColor} ${ratio}%)`;
+});
+
+audio.addEventListener('loadedmetadata', () => {
+        durationSlider.max = audio.duration;
+        durationDisplay.textContent = formatTime(audio.duration);
+    });
+audio.addEventListener('timeupdate', () => {
+        durationSlider.value = audio.currentTime;
+        currentTimeDisplay.textContent = formatTime(audio.currentTime);
+        const ratio = (durationSlider.value - durationSlider.min) / (durationSlider.max - durationSlider.min) * 100;
+  durationSlider.style.background = `linear-gradient(90deg, ${activeColor} ${ratio}%, ${inactiveColor} ${ratio}%)`;
+    });
+durationSlider.addEventListener('input', () => {
+        audio.currentTime = durationSlider.value;
+    });
+
+function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    }
+
+durationSlider.addEventListener("input", function() {
+  const ratio = (this.value - this.min) / (this.max - this.min) * 100;
+  this.style.background = `linear-gradient(90deg, ${activeColor} ${ratio}%, ${inactiveColor} ${ratio}%)`;
+});
+
+const covers = document.querySelectorAll('.covers');
+covers.forEach(image => {
+  image.addEventListener('click', function() {
+  const currentSong = this.id;
+  const newSource = currentSong + ".mp3";
+  audio.src = newSource;
+  audio.load;
+  audio.play();
+  })
+})
+
+</script>
+
+<style>
+
+body {
+    font-family: verdana;
+    background-color: #221E22;
+    color:white;
+}
+
+button {
+    font-family: verdana;
+    background-color: #31263E;
+    color: white;
+    border-radius: 15px;
+    border-color: #44355B;
+    border-width: 5px;
+    border-style:solid;
+}
+
+#durationSlider {
+  appearance: none;
+  width: 300px;
+  height: 5px;
+  border-radius: 9999px;
+  background: #8d86c9;
+  cursor: pointer;
+}
+
+#durationSLider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 15px;
+  border-radius: 9999px;
+  background: #44355b;
+  box-shadow: none;
+}
+
+#volume {
+  appearance: none;
+  width: 5px;
+  height: 200px;
+  border-radius: 9999px;
+  background: #31263e;
+  writing-mode: vertical-rl;
+  direction: rtl;
+  cursor: pointer;
+}
+
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 15px;
+  border-radius: 9999px;
+  background: #44355b;
+  box-shadow: none;
+}
+
+span {
+  text-align: center;
+  margin: auto;
+}
+
+.durationDiv {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: fit-content;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.buttonsDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+ul {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  gap: 4vw;
+}
+li {
+  list-style-type: none;
+  background-color: #31263E;
+  padding: 20px;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+ul {
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+li {
+  scroll-snap-align: center;
+}
+
+.flex-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none; 
+}
+
+.flex-item span {
+  margin: auto;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    text-align: center;
+  background-color: #31263E;
+  padding: 10px;
+  margin: 5px;
+  
+}
+
+
+</style>
+
+</body>
+</html>
+
+<!-- hex codes from darkest to lightest -->
+    <!-- 221E22 31263E 44355B 8D86C9 C3C3E6 -->
