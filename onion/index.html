@@ -1,0 +1,66 @@
+<html>
+<head>
+
+<title>OmNomNom</title>
+<link rel="icon" type="image/x-icon" href="/omFlav.png">
+
+<div class="parent header">
+<a href="/">
+  <img src="/omLogo.png">
+</a>
+</div>
+
+</head>
+<body>
+
+<div class="onion">
+<img id='image' src="/onion/onion1.png" onclick="changeOnion()">
+<div>
+
+<script>
+
+var sources = [
+'1','2','3','4','5','6','7','8','9','10',
+];
+var index = Math.floor(Math.random() * sources.length);
+var onionSource = sources[index];
+
+const image = document.getElementById('image');
+function changeOnion() {
+    window.location.reload()
+}
+
+image.src = 'onion' + onionSource + '.png'
+
+</script>
+
+<style>
+
+.onion {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 25px;
+}
+
+.onion img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.header {
+    text-align: center;
+  background-color: #31263E;
+  width: fill;
+  padding: 0.5%;
+}
+
+ .header img {
+  height: 5%;
+  object-fit: contain;
+ }
+
+</style>
+
+</body>
+</html>
