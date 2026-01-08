@@ -1,0 +1,198 @@
+<head>
+
+<title>OmNomNom</title>
+<link rel="icon" type="image/x-icon" href="/omFlav.png">
+
+<div class="parent header">
+<a href="/">
+  <img src="/omLogo.png">
+</a>
+</div>
+
+</head>
+
+<div class="rowContainer">
+    <div class="singleDice" onclick="roll4()">
+        <img src="4dice.png" class="diceButton">
+        <div class="buttonText">4</div>
+    </div>
+    <div class="singleDice" onclick="roll6()">
+        <img src="6dice.png" class="diceButton">
+        <div class="buttonText">6</div>
+    </div>
+    <div class="singleDice" onclick="roll8()">
+        <img src="8dice.png" class="diceButton">
+        <div class="buttonText">8</div>
+    </div>
+    <div class="singleDice" onclick="roll10()">
+        <img src="10dice.png" class="diceButton">
+        <div class="buttonText">10</div>
+    </div>
+    <div class="singleDice" onclick="roll12()">
+        <img src="12dice.png" class="diceButton">
+        <div class="buttonText">12</div>
+    </div>
+    <div class="singleDice" onclick="roll20()">
+        <img src="20dice.png" class="diceButton">
+        <div class="buttonText">20</div>
+    </div>
+</div>
+
+<div class="mainDiv">
+  <img src="dicePlaceholder.png" class='mainDice' id="mainDice">
+  <div class="diceText" id="diceText"></div>
+</div>
+
+<script>
+
+var mainDice = document.getElementById('mainDice');
+var diceText = document.getElementById('diceText');
+
+function roll4() {
+  diceText.innerHTML = '.';
+    setTimeout(() => {
+      diceText.innerHTML = '..';}, 300);
+    setTimeout(() => {
+      diceText.innerHTML = '...';}, 600);
+    setTimeout(() => {
+      mainDice.src = "4dice.png";
+      mainDice.style.visibility = 'visible';
+      let x = Math.floor((Math.random() * 4) + 1);
+      diceText.innerHTML = x;}, 900);
+}
+
+function roll6() {
+  diceText.innerHTML = '.';
+    setTimeout(() => {
+      diceText.innerHTML = '..';}, 300);
+    setTimeout(() => {
+      diceText.innerHTML = '...';}, 600);
+    setTimeout(() => {
+      mainDice.src = "6dice.png";
+      mainDice.style.visibility = 'visible';
+      let x = Math.floor((Math.random() * 6) + 1);
+      diceText.innerHTML = x;}, 900);
+}
+
+function roll8() {
+  diceText.innerHTML = '.';
+    setTimeout(() => {
+      diceText.innerHTML = '..';}, 300);
+    setTimeout(() => {
+      diceText.innerHTML = '...';}, 600);
+    setTimeout(() => {
+      mainDice.src = "8dice.png";
+      mainDice.style.visibility = 'visible';
+      let x = Math.floor((Math.random() * 8) + 1);
+      diceText.innerHTML = x;}, 900);
+}
+
+function roll10() {
+  diceText.innerHTML = '.';
+    setTimeout(() => {
+      diceText.innerHTML = '..';}, 300);
+    setTimeout(() => {
+      diceText.innerHTML = '...';}, 600);
+    setTimeout(() => {
+      mainDice.src = "10dice.png";
+      mainDice.style.visibility = 'visible';
+      let x = Math.floor((Math.random() * 10) + 1);
+      diceText.innerHTML = x;}, 900);
+}
+
+function roll12() {
+  diceText.innerHTML = '.';
+    setTimeout(() => {
+      diceText.innerHTML = '..';}, 300);
+    setTimeout(() => {
+      diceText.innerHTML = '...';}, 600);
+    setTimeout(() => {
+      mainDice.src = "12dice.png";
+      mainDice.style.visibility = 'visible';
+      let x = Math.floor((Math.random() * 12) + 1);
+      diceText.innerHTML = x;}, 900);
+}
+
+function roll20() {
+  diceText.innerHTML = '.';
+    setTimeout(() => {
+      diceText.innerHTML = '..';}, 300);
+    setTimeout(() => {
+      diceText.innerHTML = '...';}, 600);
+    setTimeout(() => {
+      mainDice.src = "20dice.png";
+      mainDice.style.visibility = 'visible';
+      let x = Math.floor((Math.random() * 20) + 1);
+      diceText.innerHTML = x;}, 900);
+}
+
+</script>
+
+<style>
+
+body {
+    font-family: verdana;
+    background-color: #221E22;
+    color:white;
+    font-size: 5vh;
+}
+
+.mainDice {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  visibility: hidden;
+}
+
+.mainDiv {
+  position: relative;
+  align-content: center;
+  display: grid;
+}
+
+.diceText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 300%;
+}
+
+.singleDice {
+  position: relative;
+  text-align: center;
+  height: fit-content;
+  padding-left: 1%;
+  padding-right:1%;
+}
+
+.buttonText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rowContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  padding: 2%;
+}
+
+.diceButton {
+    max-width: 75%;
+}
+
+.header {
+    text-align: center;
+  background-color: #31263E;
+  width: fill;
+  padding: 0.5%;
+}
+
+ .header img {
+  height: 5%;
+  object-fit: contain;
+ }
+
+</style>
