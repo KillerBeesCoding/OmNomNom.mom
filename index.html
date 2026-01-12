@@ -1,29 +1,32 @@
 <html>
-
 <head>
-
-<title>OmNomNom</title>
-<link rel="icon" type="image/x-icon" href="/omFlav.png">
-
-<div class="parent header">
-<a href="/">
-  <img src="omLogo.png">
-</a>
-</div>
 
 </head>
 
 <body>
 
-    <div id="mainbuttons" class="parent mainbuttons">
-    <a href="/under-construction">Bump sweet tunes!</a>
-    <a href="/under-construction">Read a bedtime story!</a>
-    <a href="/under-construction">Play some games!</a>
-    <a href="/under-construction">Fourth option!</a>
-    <button onclick="goToRandomPage()">
-    <span id="randomButton">Hello!</span>
+<div class="box">
+  <div class="row header">
+    <a href="/">
+    <img src="omLogo.png">
     </a>
+  </div>
+  <div class="row content">
+    <div class="bouncebox">
+      <p class="bouncer" onclick="goToRandomPage()">Hi</p>
     </div>
+  </div>
+  <div class="row footer">
+    <div id="mainbuttons" class="parent mainbuttons">
+      <a href="/under-construction">Bump sweet tunes!</a>
+      <a href="/under-construction">Read a bedtime story!</a>
+      <a href="/under-construction">Play some games!</a>
+      <a href="/under-construction">Fourth option!</a>
+      <button onclick="goToRandomPage()">
+      <span id="randomButton">Hello!</span>
+    </div>
+  </div>
+</div>
 
 <script>
 
@@ -76,10 +79,11 @@ function goToRandomPage() {
 <style>
 
 body {
-    font-family: verdana;
-    background-color: #221E22;
-    color:white;
-    font-size: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: verdana;
+  background-color: #221E22;
+  color:white;    font-size: 100%;
 }
 
 a {
@@ -88,26 +92,25 @@ a {
 }
 
 .header {
-    text-align: center;
+  text-align: center;
   background-color: #31263E;
   width: fill;
   padding: 0.5%;
+  height: 5%;
 }
 
  .header img {
-  height: 5%;
   object-fit: contain;
+  height: 100%;
  }
 
 .mainbuttons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 5px;
-  padding-top: 10%;
-  padding-bottom: 10%;
+  padding-bottom:1%;
   a {
     padding: 1px 6px;
-    border: 1px outset buttonborder;
     border-radius: 15px;
     color: white;
     background-color: #31263E;
@@ -126,7 +129,6 @@ a {
 
   button {
     padding: 1px 6px;
-    border: 1px outset buttonborder;
     border-radius: 15px;
     color: white;
     background-color: #31263E;
@@ -142,7 +144,68 @@ a {
     font-size: 100%;
   }
 
-</style>
-</body>
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
 
+.box .row.header {
+  flex: 0 1 auto;
+  /* The above is shorthand for:
+  flex-grow: 0,
+  flex-shrink: 1,
+  flex-basis: auto
+  */
+}
+
+.box .row.content {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box .row.footer {
+  flex: 0 1 40px;
+}
+
+@keyframes hor-movement {
+  from {
+    margin-left: 0%;
+  }
+  to {
+    margin-left: 94%;
+  }
+}
+
+@keyframes ver-movement {
+  from {
+    margin-top: 0%;
+  }
+  to {
+    margin-top: 93%;
+  }
+}
+
+.bouncer {
+  animation-name: hor-movement, ver-movement;
+  animation-duration: 10.259s, 15.013s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  font-family: Verdana;
+  font-size: 5vh;
+}
+
+.bouncebox {
+  width: 75vmin;
+  height: 75vmin;
+  background-color: black;
+  border-radius: 15px
+}
+
+</style>
+
+</body>
 </html>
