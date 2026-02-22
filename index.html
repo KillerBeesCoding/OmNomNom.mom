@@ -63,7 +63,6 @@ class BouncingLogo {
         this.element = document.createElement('p');
         this.element.className = 'bouncing-logo';
         this.element.innerText = text;
-        this.element.style.fontSize = '5vh';
         this.element.onclick = (event) => {
         const target = this.element.innerText.trim().toLowerCase();
         
@@ -229,7 +228,7 @@ body {
             margin: 0;
             padding: 5px;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 20px;
             white-space: nowrap;
             user-select: none;
         }
