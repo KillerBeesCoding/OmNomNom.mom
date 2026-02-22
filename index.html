@@ -5,57 +5,33 @@
 <link rel="icon" type="image/x-icon" href="/omFlav.png">
 
 </head>
-
 <body>
 
-<div class="box">
-  <div class="row header">
-    <a href="/">
-    <img src="omLogo.png">
-    </a>
-  </div>
-  <div class="row content">
+<div class="tvOverlay">
+  <div class="tvDiv">
+    <img class="tv" src="homepage/tv.png">
+    <img class="redbutton button" src="homepage/redButton.png" onclick="redButton()">
+    <img class="yellowbutton button" src="homepage/yellowbutton.png" onclick="yellowButton()">
+    <img class="greenbutton button" src="homepage/greenbutton.png" onclick="greenButton()">
+    <img class="bluebutton button" src="homepage/bluebutton.png" onclick="blueButton()">
+    <img class="pinkbutton button" src="homepage/pinkbutton.png" onclick="goToRandomPage()">
     <div id="container">
-        <p id="bouncing-text" onclick="goToRandomPage()">DVD</p>
+      <p id="bouncing-text" onclick="goToRandomPage()">DVD</p>
     </div>
-  </div>
-  <div class="row footer">
-    <div id="mainbuttons" class="parent mainbuttons">
-      <a href="/under-construction">Bump sweet tunes!</a>
-      <a href="/under-construction">Read a bedtime story!</a>
-      <a href="/under-construction">Play some games!</a>
-      <a href="/under-construction">Fourth option!</a>
-      <button onclick="goToRandomPage()">
-      <span id="randomButton">Hello!</span>
-    </div>
-  </div>
+  </div> 
 </div>
 
 <script>
 
-    var array = [
-"Quoth the Raven \"I love Omnomnom.mom!\"",
-"Do you want a banana?",
-"This button is random!",
-"buttonOptions[Math.floor (Math.random()*texts.length)];",
-"Hello weary traveler!",
-"ELEVEN million fireflies!",
-"Wake up in the morning feeling like... uhhh... uhhh...",
-"Unlimited bacon AND unlimited games!",
-"full stop punctuation",
-"hamilton_musical_2023 Slime Tutorial",
-"Mexican, salsa, yes!",
-"Bogos binted?",
-"But this website was promised to me 3000 years ago!",
-"I was actually team T-Series.",
-"Tuppence a bag!",
-"Hey guys, KILL ROSS.",
-"This 97-year-old website still serves its Coke the old-fashioned way!"
-];
-var index = Math.floor(Math.random() * array.length);
-var buttonOptions = array[index];
 
-document.getElementById('randomButton').innerHTML = buttonOptions
+function redButton() {
+    window.location.href = '/under-construction';}
+function yellowButton() {
+    window.location.href = '/under-construction';}
+function greenButton() {
+    window.location.href = '/under-construction';}
+function blueButton() {
+    window.location.href = '/under-construction';}
 
 const pages = [
     'soundboard',
@@ -161,102 +137,91 @@ animate();
 </script>
 
 <style>
-        body {
-            margin: 0;
-            background-color: #221E22;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: Verdana;
-        }
 
-        a {
-    color: white;
-    text-decoration: none;
-}
-
-.header {
-  text-align: center;
-  background-color: #31263E;
-  width: fill;
-  padding: 0.5%;
-  height: 5%;
-}
-
- .header img {
-  object-fit: contain;
-  height: 100%;
- }
-
-.mainbuttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 5px;
-  padding-bottom:1%;
-  a {
-    padding: 1px 6px;
-    border-radius: 15px;
-    color: white;
-    background-color: #31263E;
-    text-decoration: none;
-    text-align: center;
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 100px;
+    background-color: #221E22;
     font-family: verdana;
-    border-color: #44355B;
-    border-width: 5px;
-    border-style:solid;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    vertical-align: middle;
-}
 }
 
-
-  button {
-    padding: 1px 6px;
-    border-radius: 15px;
-    color: white;
-    background-color: #31263E;
-    text-decoration: none;
-    text-align: center;
-    font-family: verdana;
-    border-color: #44355B;
-    border-width: 5px;
-    border-style:solid;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    vertical-align: middle;
-    font-size: 100%;
-  }
-
-.box {
+.tvOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
   display: flex;
-  flex-flow: column;
-  height: 100%;
-}
-
-.box .row.header {
-  flex: 0 1 auto;
-}
-
-.box .row.content {
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
+  padding: 20px; 
+  box-sizing: border-box;
 }
 
-.box .row.footer {
-  flex: 0 1 40px;
+.tvDiv {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.tv {
+  position: relative;        /* Position relative allows z-index to work */
+  z-index: 2;                /* Middle layer */
+  max-width: 100%;
+  max-height: 90vh;
+  display: block;
+  pointer-events: none;
+}
+
+.button {
+  position: absolute;
+  z-index: 3;
+}
+
+.redbutton {
+  top: 70%; 
+  left: 22.5%;
+  width: 6%;
+}
+
+.yellowbutton {
+  top: 70.5%; 
+  left: 35.1%;
+  width: 6%;
+}
+
+.greenbutton {
+  top: 70.5%; 
+  left: 48.2%;
+  width: 6%;
+}
+
+.bluebutton {
+  top: 70.2%; 
+  left: 61%;
+  width: 6%;
+}
+
+.pinkbutton {
+  top: 69.8%; 
+  left: 73.5%;
+  width: 6%;
+}
+
+.button:hover {
+  filter: brightness(125%);
 }
 
 #container {
-            width: 75vmin;
-            height: 75vmin;
-            position: relative;
-            background: #000;
-            overflow: hidden;
-            border-radius: 15px
+            position: absolute;
+  top: 15%;
+  left: 29%;
+  width: 45%;
+  height: 46%;
+  background-color: black; /* Or any color/gradient */
+  z-index: 1;
         }
 
         .bouncing-logo {
